@@ -12,7 +12,7 @@ datasource db {
 
 model Restaurante {
   id         Int      @id @default(autoincrement())
-  nome       String
+  nome       String   @unique
   cardapio   Cardapio @relation(fields: [cardapioId], references: [id])
   cardapioId Int      @unique
 }
@@ -20,8 +20,9 @@ model Restaurante {
 model Cardapio {
   id Int @id @default(autoincrement())
 
-  restaurante Restaurante?
-  categoria   Categoria[]
+  textoInicial String
+  restaurante  Restaurante?
+  categoria    Categoria[]
 }
 
 model Categoria {

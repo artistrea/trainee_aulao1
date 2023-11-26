@@ -15,6 +15,13 @@ async function seed() {
   });
 }
 
-seed().then(() => {
-  console.log("Seed realizada com sucesso");
-});
+seed()
+  .then(() => {
+    console.log("Seed realizada com sucesso");
+  })
+  .catch((err) => {
+    console.error(err.message);
+  })
+  .finally(() => {
+    prisma.$disconnect();
+  });
